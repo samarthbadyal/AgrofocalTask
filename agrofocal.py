@@ -1,6 +1,6 @@
 import cv2
 
-def agrofocal(fileName):
+def agrofocal(fileName, newFile):
     vid = cv2.VideoCapture(fileName)        # reads original video
 
     vidFPS = vid.get(cv2.CAP_PROP_FPS)                  # pulls fps
@@ -9,7 +9,7 @@ def agrofocal(fileName):
 
     ret, frame = vid.read()             # reads each frame of the video
     fourcc = cv2.VideoWriter_fourcc('a', 'v', 'c', '1')         # fourcc code
-    writer = cv2.VideoWriter('/Users/samarthbadyal/Downloads/NewMov.mov', apiPreference = 0, 
+    writer = cv2.VideoWriter(newFile, apiPreference = 0, 
     fourcc = fourcc, fps = vidFPS, frameSize=(1280,720))            # videoWriter object to write new vid
     frames = []        
 
@@ -29,3 +29,4 @@ def agrofocal(fileName):
     writer.release()
     vid.release()
     cv2.destroyAllWindows()
+
